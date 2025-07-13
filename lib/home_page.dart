@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,23 +15,25 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RichText(
                     text: TextSpan(
                       children: <TextSpan>[
                         TextSpan(
                           text: 'Welcome to the \n',
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                             color: Colors.white,
-                            fontSize: 40.0,
+                            fontSize: 50.0,
+                            fontWeight: FontWeight.w200,
                           ),
                         ),
                         TextSpan(
                           text: 'Frontend Quiz!',
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                             color: Colors.white,
-                            fontSize: 30.0,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 55.0,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
@@ -40,7 +42,7 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 30.0),
                   Text(
                     'Pick a subject to get started',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Color(0xffA2B1C8),
                       fontSize: 16.0,
                       fontStyle: FontStyle.italic,
