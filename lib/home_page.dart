@@ -57,18 +57,22 @@ class HomePage extends StatelessWidget {
                   SubjectCard(
                     imageName: 'lib/assets/html_image.png',
                     subjectName: 'HTML',
+                    backgroundColor: const Color(0xFFFDEDD6),
                   ),
                   SubjectCard(
-                    imageName: 'lib/assets/html_image.png',
+                    imageName: 'lib/assets/css_image.png',
                     subjectName: 'CSS',
+                    backgroundColor: const Color(0xFFDAFFDA),
                   ),
                   SubjectCard(
-                    imageName: 'lib/assets/html_image.png',
+                    imageName: 'lib/assets/javascript_image.png',
                     subjectName: 'Javascript',
+                    backgroundColor: const Color(0xFFCEEAFF),
                   ),
                   SubjectCard(
-                    imageName: 'lib/assets/html_image.png',
+                    imageName: 'lib/assets/accessibility_image.png',
                     subjectName: 'Accessibility',
+                    backgroundColor: const Color(0xFFFCEBFF),
                   ),
                 ],
               ),
