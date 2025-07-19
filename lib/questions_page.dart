@@ -28,10 +28,16 @@ class _QuestionsPageState extends State<QuestionsPage> {
       currentQuestion = javascriptQuestion[currentQuestionIndex];
     }
     return Scaffold(
+      backgroundColor: const Color(0xff313E51),
       body: Center(
-        child: Text(
-          currentQuestion.question,
-          style: TextStyle(color: Colors.black, fontSize: 18.0),
+        child: Column(
+          children: [
+            Text(currentQuestion.question),
+            SizedBox(height: 20.0),
+            ...currentQuestion.getShuffledAnswers().map((answer) {
+              return Text(answer);
+            }),
+          ],
         ),
       ),
     );
