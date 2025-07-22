@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_quiz/reusable_widgets/subject_card.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:frontend_quiz/models/quiz_question_model.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+
+  HomePage({super.key});
+  final List<QuizQuestionModel> questionList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,21 +67,25 @@ class HomePage extends StatelessWidget {
                       imageName: 'lib/assets/html_image.png',
                       subjectName: 'HTML',
                       backgroundColor: const Color(0xFFFDEDD6),
+                      selectedQuestionList: questionList,
                     ),
                     SubjectCard(
                       imageName: 'lib/assets/css_image.png',
                       subjectName: 'CSS',
                       backgroundColor: const Color(0xFFDAFFDA),
+                      selectedQuestionList: questionList,
                     ),
                     SubjectCard(
                       imageName: 'lib/assets/javascript_image.png',
                       subjectName: 'Javascript',
                       backgroundColor: const Color(0xFFCEEAFF),
+                      selectedQuestionList: questionList,
                     ),
                     SubjectCard(
                       imageName: 'lib/assets/accessibility_image.png',
                       subjectName: 'Accessibility',
                       backgroundColor: const Color(0xFFFCEBFF),
+                      selectedQuestionList: questionList,
                     ),
                   ],
                 ),
