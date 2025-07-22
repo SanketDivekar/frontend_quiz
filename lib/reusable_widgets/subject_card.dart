@@ -50,8 +50,8 @@ class SubjectCard extends StatelessWidget {
                     color: backgroundColor,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  height: 60,
-                  width: 55,
+                  height: 50,
+                  width: 50,
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
                     child: Image.asset(imageName),
