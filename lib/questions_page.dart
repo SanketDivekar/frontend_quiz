@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_quiz/data/accessibility_questions.dart';
-import 'package:frontend_quiz/data/css_questions.dart';
-import 'package:frontend_quiz/data/html_questions.dart';
-import 'package:frontend_quiz/data/javascript_questions.dart';
+// import 'package:frontend_quiz/data/accessibility_questions.dart';
+// import 'package:frontend_quiz/data/css_questions.dart';
+// import 'package:frontend_quiz/data/html_questions.dart';
+// import 'package:frontend_quiz/data/javascript_questions.dart';
 import 'package:frontend_quiz/models/quiz_question_model.dart';
 import 'package:frontend_quiz/reusable_widgets/answer_button.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,11 +13,13 @@ class QuestionsPage extends StatefulWidget {
     required this.subjectName,
     required this.subjectImage,
     required this.subjectImageBgColor,
+    required this.questionsList,
   });
 
   final String subjectName;
   final String subjectImage;
   final Color subjectImageBgColor;
+  final List<QuizQuestionModel> questionsList;
   @override
   State<QuestionsPage> createState() => _QuestionsPageState();
 }
@@ -41,15 +43,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
   @override
   Widget build(BuildContext context) {
     final QuizQuestionModel currentQuestion;
-    if (widget.subjectName == 'HTML') {
-      currentQuestion = htmlQuestions[currentQuestionIndex];
-    } else if (widget.subjectName == 'CSS') {
-      currentQuestion = cssQuestions[currentQuestionIndex];
-    } else if (widget.subjectName == 'Accessibility') {
-      currentQuestion = accessibilityQuestions[currentQuestionIndex];
-    } else {
-      currentQuestion = javascriptQuestion[currentQuestionIndex];
-    }
+    currentQuestion = widget.questionsList[currentQuestionIndex];
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -106,16 +100,20 @@ class _QuestionsPageState extends State<QuestionsPage> {
                       ),
                     ),
                     SizedBox(height: 30.0),
-                    Text(
-                      softWrap: true,
-                      currentQuestion.question,
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.w500,
+                    SizedBox(
+                      height: 100,
+                      width: 400,
+                      child: Text(
+                        // softWrap: true,
+                        currentQuestion.question,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 250.0),
+                    SizedBox(height: 100.0),
                     SizedBox(
                       height: 10.0,
                       width: 350.0,
