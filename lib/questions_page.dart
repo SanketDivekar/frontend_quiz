@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:frontend_quiz/data/accessibility_questions.dart';
-// import 'package:frontend_quiz/data/css_questions.dart';
-// import 'package:frontend_quiz/data/html_questions.dart';
-// import 'package:frontend_quiz/data/javascript_questions.dart';
 import 'package:frontend_quiz/models/quiz_question_model.dart';
+import 'package:frontend_quiz/results_page.dart';
 import 'package:frontend_quiz/reusable_widgets/answer_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -35,8 +32,24 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   void onSubmitAnswer() {
     setState(() {
-      currentQuestionIndex++;
-      progressIndicatorValue += 0.1;
+      if (userSelectedAnswers.length == widget.questionsList.length) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder:
+                (context) => ResultsPage(
+                  subjectName: widget.subjectName,
+                  subjectImage: widget.subjectImage,
+                  subjectImageBgColor: widget.subjectImageBgColor,
+                  userSelectedAnswersList: userSelectedAnswers,
+                  subjectQuestionList: widget.questionsList,
+                ),
+          ),
+        );
+      } else {
+        currentQuestionIndex++;
+        progressIndicatorValue += 0.1;
+      }
     });
   }
 
@@ -54,11 +67,11 @@ class _QuestionsPageState extends State<QuestionsPage> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 155.0),
+              padding: const EdgeInsets.symmetric(horizontal: 220.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
                     decoration: BoxDecoration(
@@ -85,7 +98,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
@@ -104,7 +117,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
                       height: 100,
                       width: 400,
                       child: Text(
-                        // softWrap: true,
                         currentQuestion.question,
                         style: GoogleFonts.poppins(
                           color: Colors.white,
@@ -129,14 +141,22 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ...currentQuestion.getShuffledAnswers().map((answer) {
-                      return AnswerButton(
-                        answerText: answer,
-                        onClick: () {
-                          onClickAnswer(answer);
-                        },
-                      );
-                    }),
+                    ...currentQuestion
+                        .getShuffledAnswers()
+                        .asMap()
+                        .map(
+                          (index, answer) => MapEntry(
+                            index,
+                            AnswerButton(
+                              answerText: answer,
+                              onClick: () {
+                                onClickAnswer(answer);
+                              },
+                              index: index,
+                            ),
+                          ),
+                        )
+                        .values,
                     SizedBox(height: 10.0),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
