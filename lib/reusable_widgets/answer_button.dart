@@ -49,7 +49,7 @@ class _AnswerButtonState extends State<AnswerButton> {
           ),
           child: SizedBox(
             height: 65,
-            width: 400,
+            width: 680,
             child: Row(
               children: [
                 Container(
@@ -73,10 +73,9 @@ class _AnswerButtonState extends State<AnswerButton> {
                 SizedBox(width: 8.0),
                 Text(
                   widget.answerText,
-                  softWrap: true,
                   style: GoogleFonts.poppins(
                     color: Colors.white,
-                    fontSize: 20.0,
+                    fontSize: 18.0,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
