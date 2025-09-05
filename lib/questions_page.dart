@@ -70,7 +70,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 220.0),
+              padding: const EdgeInsets.symmetric(horizontal: 100.0),
               child: Row(
                 children: [
                   Container(
@@ -114,7 +114,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                     ),
                     SizedBox(height: 30.0),
                     SizedBox(
-                      height: 100,
+                      height: 250,
                       width: 400,
                       child: Text(
                         currentQuestion.question,
@@ -125,7 +125,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 100.0),
+                    SizedBox(height: 10.0),
                     SizedBox(
                       height: 10.0,
                       width: 350.0,
